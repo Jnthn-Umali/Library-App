@@ -26,9 +26,11 @@ Create a .env.local file and add the following:
 env
 Copy
 Edit
+
 MONGODB_URI=your_mongodb_connection_string
 EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_email_password_or_app_password
+
 ✨ Features
 📖 User Dashboard: Browse, rent books, view due dates
 
