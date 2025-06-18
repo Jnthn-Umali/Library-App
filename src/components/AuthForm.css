@@ -1,0 +1,150 @@
+/* Debug: Ensure this file is linked and not overridden by global styles */
+.auth-wrapper {
+  display: flex;
+  width: 900px;
+  height: 600px;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  margin: auto;
+}
+
+.auth-left, .auth-right {
+  width: 50%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-left {
+  background: #fff;
+}
+
+.auth-right {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Debug: Check if h2 styles are applied with high specificity */
+.auth-info h2, .auth-form h2 {
+  font-size: 32px !important;
+  margin-bottom: 24px !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Debug: Ensure p styles are applied to auth-info with high specificity */
+.auth-info p {
+  font-size: 18px !important;
+  margin-bottom: 30px !important;
+  opacity: 0.9 !important;
+  line-height: 1.5 !important;
+}
+
+.auth-form input, .auth-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #6a11cb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-form button:hover {
+  background-color: #5a0eb0;
+}
+
+.toggle-text {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.toggle-text span {
+  color: #6a11cb;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Debug: Increase specificity to avoid overrides with unique class */
+.auth-right .auth-info .toggle-button {
+  background: white !important;
+  color: #6a11cb !important;
+  border: 2px solid #ffffff !important;
+  padding: 14px 24px !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.auth-right .auth-info .toggle-button:hover {
+  background: #f8f8f8 !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+.message {
+  background-color: #e6ffed;
+  border: 1px solid #3c763d;
+  padding: 10px;
+  border-radius: 8px;
+  color: #3c763d;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 900px) {
+  .auth-wrapper {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    min-height: 600px;
+  }
+
+  .auth-left, .auth-right {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .auth-left {
+    order: 1;
+  }
+
+  .auth-right {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .auth-info h2, .auth-form h2 {
+    font-size: 28px !important;
+  }
+
+  .auth-info p {
+    font-size: 16px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .auth-right .auth-info .toggle-button {
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+  }
+}

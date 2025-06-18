@@ -1,0 +1,163 @@
+/* src/app/dashboard/staff/staffdashboard.css */
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #2c3e50;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.dashboard-container {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f5f5f5; /* Optional light background */
+}
+
+/* BookFilter styles */
+.filter-section {
+  margin-bottom: 20px;
+}
+
+.filter-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.genre-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.genre-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+.add-book-section {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px 0;
+}
+
+.add-book-button {
+  background-color: #2ecc71;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-book-button:hover {
+  background-color: #27ae60;
+  transform: scale(1.05);
+}
+.welcome-text {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 5px 0;
+}
+.mark-returned-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.mark-returned-button:hover {
+  background-color: #45a049;
+}
+.rent-section {
+  margin: 1rem 0;
+}
+
+.rent-section h2 {
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.25rem;
+}
+
+.empty {
+  color: #666;
+  font-style: italic;
+}
+
+.rent-card {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  background: #fafafa;
+}
+
+.rent-card--returned {
+  opacity: 0.8;
+}
+
+.rent-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f0f0f0;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.rent-user {
+  font-weight: bold;
+}
+
+.rent-dates span {
+  margin-left: 1rem;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.rent-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rent-table th,
+.rent-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.btn--small {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  border: 1px solid #888;
+  background: white;
+  cursor: pointer;
+}
+
+.btn--small:hover {
+  background: #f5f5f5;
+}
+
+.rent-books-list {
+  list-style: disc inside;
+  padding: 0.5rem 1rem;
+  margin: 0;
+}

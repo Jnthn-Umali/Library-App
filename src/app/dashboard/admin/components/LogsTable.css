@@ -1,0 +1,86 @@
+/* Already existing styles (no need to duplicate if added) */
+.logs-container {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+  margin-bottom: 2rem;
+}
+
+.logs-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.logs-search-input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+}
+
+.logs-table-wrapper {
+  overflow-x: auto;
+}
+
+.logs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.logs-table th,
+.logs-table td {
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.logs-table th {
+  background-color: #eff6ff;
+  font-weight: 600;
+  color: #374151;
+}
+
+.logs-table tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+.logs-table tr:hover {
+  background-color: #e0f2fe;
+  transition: background-color 0.2s;
+}
+
+.sortable {
+  cursor: pointer;
+}
+
+/* Tooltip for user agent preview */
+.group {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-content {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  background-color: #1f2937; /* Gray-800 */
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  top: 120%;
+  left: 0;
+  white-space: pre-wrap;
+  width: 300px;
+}
+
+.group:hover .tooltip-content {
+  display: block;
+}

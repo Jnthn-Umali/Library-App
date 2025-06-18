@@ -1,0 +1,79 @@
+.pending-rents-section {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.pending-rents-section h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+  color: #333;
+}
+
+.pending-rents-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.pending-rent-card {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #fafafa;
+  transition: box-shadow 0.3s;
+}
+
+.pending-rent-card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+}
+
+.pending-rent-card p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.pending-rent-card ul {
+  margin-top: 8px;
+  padding-left: 20px;
+  list-style-type: disc;
+  color: #555;
+}
+
+.rent-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.confirm-button,
+.delete-button {
+  padding: 6px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.confirm-button {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.confirm-button:hover {
+  background-color: #27ae60;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}

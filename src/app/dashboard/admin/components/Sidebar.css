@@ -1,0 +1,87 @@
+/* Sidebar.css */
+
+.sidebar {
+  height: 100vh;
+  width: 12rem; /* Reduced from 16rem (256px) to 12rem (192px) */
+  background-color: #1e3a8a; /* Tailwind's blue-900 */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+  margin-bottom: 1rem;
+  padding-left: 0.25rem;
+  font-size: 1.125rem; /* Reduced from 1.25rem */
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-nav {
+  flex-grow: 1;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem; /* Reduced padding */
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 0.875rem;
+}
+
+.sidebar-item:hover,
+.sidebar-item:focus {
+  background-color: #1d4ed8;
+}
+
+.sidebar-item.active {
+  background-color: #1e40af;
+  font-weight: 600;
+}
+
+.sidebar-logout {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #dc2626;
+  color: white;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.sidebar-logout:hover,
+.sidebar-logout:focus {
+  background-color: #b91c1c;
+}
+.sidebar-section {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-section-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #cbd5e1; /* Tailwind slate-300 */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

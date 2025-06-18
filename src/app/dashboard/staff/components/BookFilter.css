@@ -1,0 +1,12 @@
+.genre-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.genre-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}

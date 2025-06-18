@@ -1,0 +1,45 @@
+/* src/app/dashboard/user/components/RentalHistory.css */
+.rental-history {
+  padding: 20px;
+}
+
+.rental-entry {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+  list-style: none;
+}
+
+.rental-entry ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.filter-controls {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-controls label {
+  margin-right: 10px;
+}
+
+.filter-controls select {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.overdue-notice {
+  color: red;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.no-due-date {
+  color: gray;
+  font-style: italic;
+}
