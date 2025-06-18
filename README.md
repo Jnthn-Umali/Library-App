@@ -23,15 +23,12 @@ Open http://localhost:3000 in your browser to see the app.
 ⚙️ Environment Variables
 Create a .env.local file and add the following:
 
-env
-Copy
-Edit
-
 MONGODB_URI=your_mongodb_connection_string
 
 EMAIL_USER=your_email@gmail.com
 
 EMAIL_PASS=your_email_password_or_app_password
+
 
 ✨ Features
 📖 User Dashboard: Browse, rent books, view due dates
@@ -46,6 +43,7 @@ EMAIL_PASS=your_email_password_or_app_password
 
 🔒 Role-based session handling
 
+
 📁 Folder Structure
 bash
 Copy
@@ -57,12 +55,11 @@ src/
 ├── models/          # Mongoose models
 ├── scripts/         # Server-side scripts (e.g., email reminders)
 📨 Sending Due Emails (Manual Script)
-Run this to send reminders:
 
-bash
-Copy
-Edit
+Run this to send reminders:
 node scripts/sendDueEmails.cjs
+
+
 📦 Tech Stack
 Frontend: React, Next.js App Router
 
