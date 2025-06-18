@@ -100,37 +100,51 @@ export default async function handler(req, res) {
   // ─── DELETE: Delete Book ────────────────────
   if (req.method === 'DELETE') {
     try {
+      // Find the book by ID
       const bookToDelete = await Book.findById(id);
       if (!bookToDelete) {
         return res.status(404).json({ error: 'Book not found' });
       }
 
+      // If imageUrl exists, attempt to delete the file from /public/uploads
       if (bookToDelete.imageUrl) {
-        const filePath = path.join(process.cwd(), 'public', bookToDelete.imageUrl);
+        const filePath = path.join(
+          process.cwd(),
+          'public',
+          'uploads',
+          path.basename(bookToDelete.imageUrl)
+        );
+
         if (fs.existsSync(filePath)) {
           fs.unlinkSync(filePath);
+          console.log(`Deleted image file: ${filePath}`);
+        } else {
+          console.warn(`Image file not found: ${filePath}`);
         }
       }
 
+      // Delete the book from the database
       await Book.findByIdAndDelete(id);
 
+      // Retrieve the user session
       const session = await getSession(req, res);
       const user = session?.user;
 
-      if (!user?._id) {
+      if (!user || !user._id) {
         return res.status(401).json({ error: 'Unauthorized' });
       }
 
+      // Log the delete action to StaffLog
       await StaffLog.create({
-        staffId: user._id, // Use _id, not userId
+        staffId: user._id,
         action: 'delete_book',
         bookId: id,
         timestamp: new Date(),
       });
 
-      return res.status(204).end();
+      return res.status(204).end(); // No Content
     } catch (error) {
-      console.error('Delete error:', error);
+      console.error('Error deleting book:', error);
       return res.status(500).json({ error: 'Failed to delete book' });
     }
   }

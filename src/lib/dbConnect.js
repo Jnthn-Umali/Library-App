@@ -1,6 +1,10 @@
 // src/lib/dbConnect.js
 import mongoose from 'mongoose';
 
+// ✅ Load environment variables manually for non-Next.js environments
+import dotenv from 'dotenv';
+dotenv.config();
+
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {

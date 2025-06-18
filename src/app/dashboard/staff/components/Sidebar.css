@@ -8,6 +8,10 @@
   flex-direction: column;
   padding: 20px;
   box-sizing: border-box;
+  position: fixed; /* Makes the sidebar stick to the viewport */
+  top: 0; /* Aligns the sidebar to the top of the viewport */
+  left: 0; /* Aligns the sidebar to the left of the viewport */
+  z-index: 1000; /* Ensures the sidebar stays above other content */
 }
 
 .sidebar h2 {

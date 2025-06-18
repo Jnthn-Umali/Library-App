@@ -3,6 +3,7 @@
 .dashboard-layout {
   display: flex;
   min-height: 100vh;
+  padding-left: 220px; /* Sidebar width (200px) + sidebar padding (20px) */
 }
 
 .sidebar {

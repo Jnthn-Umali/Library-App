@@ -77,3 +77,124 @@
 .delete-button:hover {
   background-color: #c0392b;
 }
+
+.rent-section {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.rent-section h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.search-section {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4CAF50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.empty {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 20px;
+}
+
+.rent-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.rent-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.rent-user {
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+}
+
+.rent-dates {
+  color: #666;
+  font-size: 14px;
+}
+
+.rent-dates span {
+  margin-right: 12px;
+}
+
+.rent-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.rent-table th,
+.rent-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.rent-table th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  color: #333;
+  font-size: 14px;
+}
+
+.rent-table td {
+  color: #555;
+  font-size: 14px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .rent-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rent-dates {
+    margin-top: 8px;
+  }
+
+  .search-input {
+    max-width: 100%;
+  }
+
+  .rent-table th,
+  .rent-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+}

@@ -7,6 +7,9 @@ import BookModal from './components/BookModal';
 import BookFilter from './components/BookFillter';
 import BookGrid from './components/BookGrid';
 import PendingRentsSection from './components/PendingRentsSection';
+import ConfirmedRentsSection from './components/ConfirmedRentsSection';
+import ReturnedRentsSection from './components/ReturnedRentsSection';
+
 
 export default function StaffDashboard() {
   const [books, setBooks] = useState([]);
@@ -20,23 +23,25 @@ export default function StaffDashboard() {
   const [confirmedRents, setConfirmedRents] = useState([]);
   const [returnedRents, setReturnedRents] = useState([]); // New state for returned rents
   const [activeTab, setActiveTab] = useState('books');
+  const [selectedDueDates, setSelectedDueDates] = useState({});
 
   const fetchAllRents = async () => {
-    try {
-      const res = await fetch('/api/rents');
-      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-      const data = await res.json();
-      setPendingRents(data.filter(r => r.status === 'pending') || []);
-      setConfirmedRents(data.filter(r => r.status === 'confirmed') || []);
-      setReturnedRents(data.filter(r => r.status === 'returned') || []);
-    } catch (err) {
-      console.error('Failed to fetch rents:', err);
-      alert(`Failed to fetch rents: ${err.message}`);
-      setPendingRents([]);
-      setConfirmedRents([]);
-      setReturnedRents([]);
-    }
-  };
+  try {
+    const res = await fetch('/api/rents?populate=true');
+    if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+    const data = await res.json();
+    console.log('Fetched rents:', data); // Debug: Log fetched data
+    setPendingRents(data.filter(r => r.status === 'pending') || []);
+    setConfirmedRents(data.filter(r => r.status === 'confirmed') || []);
+    setReturnedRents(data.filter(r => r.status === 'returned') || []);
+  } catch (err) {
+    console.error('Failed to fetch rents:', err);
+    alert(`Failed to fetch rents: ${err.message}`);
+    setPendingRents([]);
+    setConfirmedRents([]);
+    setReturnedRents([]);
+  }
+};
 
   const fetchBooks = async () => {
     setLoading(true);
@@ -203,6 +208,29 @@ export default function StaffDashboard() {
     return (authorMatch || titleMatch) && genreMatch;
   });
 
+  const handleExtendDueDate = async (rentId, bookId, newDueDate) => {
+  console.log('handleExtendDueDate called with:', { rentId, bookId, newDueDate });
+  try {
+    const res = await fetch(`/api/rents/${rentId}/extend`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ bookId, newDueDate }),
+    });
+
+    if (!res.ok) {
+      const errData = await res.json();
+      throw new Error(errData.error || 'Unknown error');
+    }
+
+    alert('Due date extended successfully');
+    fetchAllRents();
+  } catch (err) {
+    console.error('Failed to extend due date:', err);
+    alert(`Failed to extend due date: ${err.message}`);
+  }
+};
+
+
   return (
     <div className="dashboard-layout">
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} onLogout={handleLogout} />
@@ -240,7 +268,6 @@ export default function StaffDashboard() {
               selectedGenres={selectedGenres}
               onGenreToggle={handleGenreChange}
             />
-
             {loading ? (
               <p className="loading-text">Loading…</p>
             ) : (
@@ -252,7 +279,6 @@ export default function StaffDashboard() {
             )}
           </>
         )}
-
         {activeTab === 'pending' && (
           <PendingRentsSection
             pendingRents={pendingRents}
@@ -260,93 +286,19 @@ export default function StaffDashboard() {
             onDeleteRent={handleDeleteRent}
           />
         )}
-          {/* … earlier tabs … */}
-
-{activeTab === 'confirmed' && (
-  <section className="rent-section">
-    <h2>Confirmed Rentals</h2>
-    {confirmedRents.length === 0
-      ? <p className="empty">No confirmed rentals.</p>
-      : confirmedRents.map(rent => {
-          // assume each book entry has rentedAt and dueDate
-          const rentedAt = new Date(rent.books[0].rentedAt).toLocaleDateString();
-          const dueDate   = new Date(rent.books[0].dueDate).toLocaleDateString();
-          return (
-            <div key={rent._id} className="rent-card">
-              <header className="rent-card__header">
-                <div className="rent-user">{rent.userId.email}</div>
-                <div className="rent-dates">
-                  <span>Rented: <time dateTime={rent.books[0].rentedAt}>{rentedAt}</time></span>
-                  <span>Due: <time dateTime={rent.books[0].dueDate}>{dueDate}</time></span>
-                </div>
-              </header>
-              <table className="rent-table">
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {rent.books.map(book => (
-                    <tr key={book.bookId._id}>
-                      <td>{book.title}</td>
-                      <td>{book.returned ? 'Returned' : 'Outstanding'}</td>
-                      <td>
-                        <button
-                          className="btn--small"
-                          onClick={() =>
-                            handleMarkReturned(
-                              rent._id,
-                              book.bookId._id,
-                              book.returned
-                            )
-                          }
-                        >
-                          {book.returned ? 'Undo Return' : 'Mark Returned'}
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          );
-        })
-    }
-  </section>
-)}
-
-
-        
-
-        {activeTab === 'return' && (
-          <div>
-            <h3>Return Books</h3>
-            {confirmedRents
-              .filter(rent => rent.books.some(book => !book.returned))
-              .map(rent => (
-                <div key={rent._id} className="rent-card">
-                  <p><strong>User:</strong> {rent.userId.email}</p>
-                  <ul>
-                    {rent.books
-                      .filter(book => !book.returned)
-                      .map(book => (
-                        <li key={book.bookId}>
-                          {book.title}
-                          <button
-                            className="mark-returned-button"
-                            onClick={() => handleMarkReturned(rent._id, book.bookId._id, book.returned)}
-                          >
-                            Mark as Returned
-                          </button>
-                        </li>
-                      ))}
-                  </ul>
-                </div>
-              ))}
-          </div>
+           {activeTab === 'confirmed' && (
+          <ConfirmedRentsSection
+            confirmedRents={confirmedRents}
+            onMarkReturned={handleMarkReturned}
+            onExtendDueDate={handleExtendDueDate}
+            selectedDueDates={selectedDueDates}
+            setSelectedDueDates={setSelectedDueDates}
+          />
+        )}
+        {activeTab === 'returned' && (
+          <ReturnedRentsSection
+            returnedRents={returnedRents}
+          />
         )}
       </div>
     </div>
