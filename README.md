@@ -8,8 +8,6 @@ It includes features such as book rentals, return tracking, email reminders, ana
 ## 🚀 Getting Started
 
 Clone the repo and install dependencies:
-
-```bash
   git clone https://github.com/Jnthn-Umali/Library-App.git
   cd Library-App
   npm install
