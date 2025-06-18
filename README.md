@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📚 Library App
 
-## Getting Started
+This is a **Library Management System** built with **Next.js**, supporting **admin**, **staff**, and **user** dashboards.  
+It includes features such as book rentals, return tracking, email reminders, analytics, and role-based access.
 
-First, run the development server:
+---
+
+## 🚀 Getting Started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Clone the repo and install dependencies:
+  git clone https://github.com/Jnthn-Umali/Library-App.git
+  cd Library-App
+  npm install
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the development server:
+  npm run dev
+  # or
+  yarn dev
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Open http://localhost:3000 in your browser to see the app.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+⚙️ Environment Variables
+Create a .env.local file and add the following:
+  MONGODB_URI=your_mongodb_connection_string
+  EMAIL_USER=your_email@gmail.com
+  EMAIL_PASS=your_email_password_or_app_password
 
-## Learn More
+✨ Features
+  📖 User Dashboard: Browse, rent books, view due dates
+  🛠️ Staff Dashboard: Manage inventory, confirm rentals, mark returns
+  🧑‍💼 Admin Dashboard: Manage users, view logs, analytics
+  🛎️ Email Reminders: Automated emails for due/overdue books
+  📊 Analytics: Real-time statistics and activity logs
+  🔒 Auth: Role-based session management
 
-To learn more about Next.js, take a look at the following resources:
+📁 Folder Structure
+  src/
+  ├── app/             # App routes (Next.js App Router)
+  │   └── dashboard/   # User/Admin/Staff dashboards
+  ├── lib/             # Utilities (e.g., mailer, dbConnect)
+  ├── models/          # Mongoose models
+  ├── scripts/         # Server-side scripts (e.g., email reminders)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+📨 Sending Due Emails (Manual Script)
+  Run this script manually to send due or overdue reminders:
+  node scripts/sendDueEmails.cjs
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📦 Tech Stack
+  Frontend: React, Next.js App Router
+  Backend: Node.js (API routes in Next.js)
+  Database: MongoDB with Mongoose
+  Email: Nodemailer with Gmail SMTP
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
